@@ -1,0 +1,10 @@
+dist: xenial
+before_install:
+- "sudo apt-get update && sudo apt-get install --no-install-recommends texlive-bibtex-extra texlive-bibtex-extra texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra texlive-latex-recommended dvipng texlive-publishers && sudo texhash"
+script:
+- mkdir .build
+- REVID=${TRAVIS_COMMIT:0:7}
+- BUILDCSTDATE=$(TZ="Europe/Prague" date +"%d-%h-%y, %H:%M:%S")
+- pdflatex -output-directory .build ./ppt.tex
+- pdflatex -output-directory .build ./ppt.cz.tex
+
