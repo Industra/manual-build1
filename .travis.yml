@@ -9,6 +9,9 @@ script:
 - BUILDCSTDATE=$(TZ="Europe/Prague" date +"%d-%h-%y, %H:%M:%S")
 - pdflatex -output-directory .build ./ppt.tex
 - pdflatex -output-directory .build ./ppt.cz.tex
+
+- pdflatex -output-directory .build ./ppt.tex
+- pdflatex -output-directory .build ./ppt.cz.tex
 deploy:
   provider: releases
   api_key:
