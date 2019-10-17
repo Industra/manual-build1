@@ -1,21 +1,20 @@
 dist: xenial
 before_install:
-- "sudo apt-get update && sudo apt-get install --no-install-recommends texlive-bibtex-extra texlive-bibtex-extra texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra texlive-latex-recommended dvipng texlive-publishers && sudo texhash"
+- sudo apt-get update && sudo apt-get install --no-install-recommends texlive-bibtex-extra
+  texlive-bibtex-extra texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra
+  texlive-latex-recommended dvipng texlive-publishers && sudo texhash
 script:
 - mkdir .build
 - REVID=${TRAVIS_COMMIT:0:7}
 - BUILDCSTDATE=$(TZ="Europe/Prague" date +"%d-%h-%y, %H:%M:%S")
 - pdflatex -output-directory .build ./ppt.tex
 - pdflatex -output-directory .build ./ppt.cz.tex
-
 deploy:
   provider: releases
   api_key:
-    secure: ahhIgZD2o6nLMgGxgYXoLN5NiCCaoSchp247WVL76Rr0zMW6UXMfiqL7b13WlANXWv64czrMq+JGnmq4V+Vo9/HxSVnnGjehskN9mTk92g22Nsx8CJD9KJcNLdMlpfze4G2QamoJJoy3+lXi7o6YicvSTFXmwpwKkPanVOyu9OxX2IGBf+rAJyZ2ezgBrnW59u5i6f/cmDiR0dzMNItTXWmUrZbLkJV0uCCDPYbtE5xd1U9M3kGkqzCDOygDvqkW8HUliPqGYN3MPYf6MiN9OzJmc2TwLUv8O65S0IHAMUy0ZP9YXXEPN0fo6EkZCYWd+7CmlW5SqpGhvpVFsne4UteosKMA4ITGFUwlgOebmVnpADd6lHzFcKn+nvp/NVsICNfV6Vx7d/3xbRgYUNoBtDMIHhkGAiSVGsbq2SqU5dJvg0+gSH4t7hh+8lAXl/mUj7kzW40ulJzgeHHcq7E6tAPQYxhsQSQqBuVN1/QxZE+lNI0am2Ncd858oZBhy2yC86JFAv/GyUCePELHX+hPmXuwMOZCk2L8CyWIXWzTVd3kLgpnw1qrlv+Fks2UtX2GiaGA8sBe8EGe3oREpDdw/Pe1fI35ND17b1xcsvZ/x5/GVywUm3XDcTHswBWFZOaCMWipmuNUrSci7UfFgcTlTcHUfi1Le8y5WYLER8af2/Y=
-  file:
-  - .build/ppt.pdf
-  - .build/ppt.cz.pdf
-  skip_cleanup: true
+    secure: mNsdgSiVHJk3gcl4XL8MqVJohEfk85T8g1SvQkeVd26S39lLgkAhAwFpumYqIBwhVU2bC2kf2y1V0V1E8sbw1JG48nIJt/K5HNbPr9MhNyy5kYKszTteSzIqPOPXIx+2NciNaGYsWi2VC1tvyxNoy9uxrnFKsG4HqihcdaSTQrjulzV+slR6JnlSwvJe9UFiD1erfdYkIh5VDV0Nx7La2MvjFIWp4ZPr8AhH7yUcq8Vfg4cSR0RHqGytyvcIsnZCoJlQS1JouPX+tTP5221e+zcP5EFUlVV1/Yh7Ryel7Cst1NPK6N4rnXj3onxzlA/pK4P1rbnpR1iQCSrNaVeZnKeDj36cbOjhY/+UK0hnj8RiTvDUyT19Krk4CAWTjS4Y96qdxDekKZ7kvy4CHWWs6o4OnlJuP6ZkXIl+OVe1Ucvp2NYxXlVNZv5JxvpNsxIAmKa2mqlOlXaZiXPUbNoK0COKnKHvVGOw49iIeNFDuJLD7B6MH+IhJbF0Hnq3mFJ22xqwmTEf/Z7ObQtO0lhRYcnS7Rwv1Wjbw7x18sPgvYp94GJ6dPNmXhtNb7V/DFXlj3ZdmFxpmm649upiL34z7ZzEmpyEwu+AzFGMQCZQyrfPG/IvXlC8mdNckXCR/Dw2HdR/iP0CVxhlrYFidL9GIdK5uK6nOU4tt+1eTa9F/VU=
+  file: 
+    - ".build/ppt.pdf"
+    - ".build/ppt.cz.pdf"
   on:
-    branch: master
-    tags: true
+    repo: Industra/manual-build1
