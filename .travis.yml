@@ -8,3 +8,14 @@ script:
 - pdflatex -output-directory .build ./ppt.tex
 - pdflatex -output-directory .build ./ppt.cz.tex
 
+deploy:
+  provider: releases
+  api_key:
+    secure: ahhIgZD2o6nLMgGxgYXoLN5NiCCaoSchp247WVL76Rr0zMW6UXMfiqL7b13WlANXWv64czrMq+JGnmq4V+Vo9/HxSVnnGjehskN9mTk92g22Nsx8CJD9KJcNLdMlpfze4G2QamoJJoy3+lXi7o6YicvSTFXmwpwKkPanVOyu9OxX2IGBf+rAJyZ2ezgBrnW59u5i6f/cmDiR0dzMNItTXWmUrZbLkJV0uCCDPYbtE5xd1U9M3kGkqzCDOygDvqkW8HUliPqGYN3MPYf6MiN9OzJmc2TwLUv8O65S0IHAMUy0ZP9YXXEPN0fo6EkZCYWd+7CmlW5SqpGhvpVFsne4UteosKMA4ITGFUwlgOebmVnpADd6lHzFcKn+nvp/NVsICNfV6Vx7d/3xbRgYUNoBtDMIHhkGAiSVGsbq2SqU5dJvg0+gSH4t7hh+8lAXl/mUj7kzW40ulJzgeHHcq7E6tAPQYxhsQSQqBuVN1/QxZE+lNI0am2Ncd858oZBhy2yC86JFAv/GyUCePELHX+hPmXuwMOZCk2L8CyWIXWzTVd3kLgpnw1qrlv+Fks2UtX2GiaGA8sBe8EGe3oREpDdw/Pe1fI35ND17b1xcsvZ/x5/GVywUm3XDcTHswBWFZOaCMWipmuNUrSci7UfFgcTlTcHUfi1Le8y5WYLER8af2/Y=
+  file:
+  - .build/ppt.pdf
+  - .build/ppt.cz.pdf
+  skip_cleanup: true
+  on:
+    branch: master
+    tags: true
