@@ -13,8 +13,7 @@ script:
 - pdflatex -output-directory .build ./ppt.tex
 - pdflatex -output-directory .build ./ppt.cz.tex
 
-- sed -i -e "s/\\setbeameroption{hide notes}/\\setbeameroption{show only notes}/g" ./ppt.cz.tex
-- pdflatex -output-directory .build/notes ./ppt.cz.tex
+- sed -i -e "s/.*pptnoteschange/\\\setbeameroption{show only notes}/g" ./ppt.cz.tex- pdflatex -output-directory .build/notes ./ppt.cz.tex
 - pdflatex -output-directory .build/notes ./ppt.cz.tex
 - mv .build/notes/ppt.cz.pdf notes.cz.pdf
 
