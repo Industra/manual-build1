@@ -25,6 +25,7 @@ deploy:
   file: 
     - ".build/ppt.pdf"
     - ".build/ppt.cz.pdf"
+    - ".build/notes/ppt.cz.pdf"
   skip_cleanup: true
   on:
     repo: Industra/manual-build1
