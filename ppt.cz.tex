@@ -1,5 +1,5 @@
 \documentclass[14pt]{beamer}
-\usepackage[utf8]{inputenc}
+%\usepackage[utf8]{inputenc}
 
 \usepackage{utopia} %font utopia imported
 
@@ -7,6 +7,12 @@
 
 \usetheme{Madrid}
 \usecolortheme{default}
+
+\usepackage{pgfpages}
+
+%%\setbeameroption{hide notes}
+\setbeameroption{show only notes} % Only notes
+%\setbeameroption{show notes on second screen=right} % Both
 
 %------------------------------------------------------------
 %This block of code defines the information to appear in the
@@ -17,7 +23,7 @@
 \subtitle{Industra LABS Training Series}
 
 \author[Šimon Berka] % (optional)
-{Simon Berka\inst{1} \and Industra LABS team\inst{2}}
+{Šimon Berka\inst{1} \and Industra LABS\inst{2}}
 
 
 
@@ -225,6 +231,7 @@
 \centering
 \includegraphics[scale=0.35]{imgs/lb_simulator.png}
 
+\note[item]{vždy dobré použít, předejdete chybám a ztrátě drahého materiálu}
 \end{frame}
 
 
