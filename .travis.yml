@@ -4,7 +4,7 @@ before_install:
   texlive-bibtex-extra texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra
   texlive-latex-recommended dvipng texlive-publishers && sudo texhash
 script:
-- mkdir .build
+- mkdir -p .build/notes
 - REVID=${TRAVIS_COMMIT:0:7}
 - BUILDCSTDATE=$(TZ="Europe/Prague" date +"%d-%h-%y, %H:%M:%S")
 - pdflatex -output-directory .build ./ppt.tex
@@ -12,6 +12,12 @@ script:
 
 - pdflatex -output-directory .build ./ppt.tex
 - pdflatex -output-directory .build ./ppt.cz.tex
+
+- sed -i -e "s/\\setbeameroption{hide notes}/%\\setbeameroption{hide notes}/g" ./ppt.cz.tex
+- sed -i -e "s/\\setbeameroption{hide notes}/\\setbeameroption{show only notes}/g" ./ppt.cz.tex
+- pdflatex -output-directory .build/notes ./ppt.cz.tex
+- pdflatex -output-directory .build/notes ./ppt.cz.tex
+
 deploy:
   provider: releases
   api_key:
