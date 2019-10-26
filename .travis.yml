@@ -29,7 +29,7 @@ deploy:
     - "presentation/notes.cz.pdf"
   skip_cleanup: true
   on:
-    repo: Industra/manual-build1
+    repo: industra/manual-build1
     branch: master
     tags: true
 
