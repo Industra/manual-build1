@@ -4,28 +4,28 @@ before_install:
   texlive-bibtex-extra texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra
   texlive-latex-recommended dvipng texlive-publishers && sudo texhash
 script:
-- mkdir -p .build/notes
+- mkdir -p presentation/.build/notes
 - REVID=${TRAVIS_COMMIT:0:7}
 - BUILDCSTDATE=$(TZ="Europe/Prague" date +"%d-%h-%y, %H:%M:%S")
-- pdflatex -output-directory .build ./ppt.tex
-- pdflatex -output-directory .build ./ppt.cz.tex
+- pdflatex -output-directory presentation/.build ./presentation/ppt.tex
+- pdflatex -output-directory presentation/.build ./presentation/ppt.cz.tex
 
-- pdflatex -output-directory .build ./ppt.tex
-- pdflatex -output-directory .build ./ppt.cz.tex
+- pdflatex -output-directory presentation/.build ./presentation/ppt.tex
+- pdflatex -output-directory presentation/.build ./presentation/ppt.cz.tex
 
-- sed -i -e "s/.*pptnoteschange/\\\setbeameroption{show only notes}/g" ./ppt.cz.tex
-- pdflatex -output-directory .build/notes ./ppt.cz.tex
-- pdflatex -output-directory .build/notes ./ppt.cz.tex
-- mv .build/notes/ppt.cz.pdf notes.cz.pdf
+- sed -i -e "s/.*pptnoteschange/\\\setbeameroption{show only notes}/g" ./presentation/ppt.cz.tex
+- pdflatex -output-directory presentation/.build/notes ./presentation/ppt.cz.tex
+- pdflatex -output-directory presentation/.build/notes ./presentation/ppt.cz.tex
+- mv presentation/.build/notes/ppt.cz.pdf presentation/notes.cz.pdf
 
 deploy:
   provider: releases
   api_key:
     secure: mNsdgSiVHJk3gcl4XL8MqVJohEfk85T8g1SvQkeVd26S39lLgkAhAwFpumYqIBwhVU2bC2kf2y1V0V1E8sbw1JG48nIJt/K5HNbPr9MhNyy5kYKszTteSzIqPOPXIx+2NciNaGYsWi2VC1tvyxNoy9uxrnFKsG4HqihcdaSTQrjulzV+slR6JnlSwvJe9UFiD1erfdYkIh5VDV0Nx7La2MvjFIWp4ZPr8AhH7yUcq8Vfg4cSR0RHqGytyvcIsnZCoJlQS1JouPX+tTP5221e+zcP5EFUlVV1/Yh7Ryel7Cst1NPK6N4rnXj3onxzlA/pK4P1rbnpR1iQCSrNaVeZnKeDj36cbOjhY/+UK0hnj8RiTvDUyT19Krk4CAWTjS4Y96qdxDekKZ7kvy4CHWWs6o4OnlJuP6ZkXIl+OVe1Ucvp2NYxXlVNZv5JxvpNsxIAmKa2mqlOlXaZiXPUbNoK0COKnKHvVGOw49iIeNFDuJLD7B6MH+IhJbF0Hnq3mFJ22xqwmTEf/Z7ObQtO0lhRYcnS7Rwv1Wjbw7x18sPgvYp94GJ6dPNmXhtNb7V/DFXlj3ZdmFxpmm649upiL34z7ZzEmpyEwu+AzFGMQCZQyrfPG/IvXlC8mdNckXCR/Dw2HdR/iP0CVxhlrYFidL9GIdK5uK6nOU4tt+1eTa9F/VU=
   file: 
-    - ".build/ppt.pdf"
-    - ".build/ppt.cz.pdf"
-    - "./notes.cz.pdf"
+    - "presentation/.build/ppt.pdf"
+    - "presentation/.build/ppt.cz.pdf"
+    - "presentation/./notes.cz.pdf"
   skip_cleanup: true
   on:
     repo: Industra/manual-build1
