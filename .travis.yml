@@ -18,6 +18,7 @@ script:
 - pdflatex -output-directory .build/notes ./ppt.cz.tex
 - pdflatex -output-directory .build/notes ./ppt.cz.tex
 - mv .build/notes/ppt.cz.pdf notes.cz.pdf
+- cd ../
 
 deploy:
   provider: releases
