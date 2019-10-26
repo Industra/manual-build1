@@ -7,16 +7,17 @@ script:
 - mkdir -p presentation/.build/notes
 - REVID=${TRAVIS_COMMIT:0:7}
 - BUILDCSTDATE=$(TZ="Europe/Prague" date +"%d-%h-%y, %H:%M:%S")
-- pdflatex -output-directory presentation/.build ./presentation/ppt.tex
-- pdflatex -output-directory presentation/.build ./presentation/ppt.cz.tex
+- cd presentation/
+- pdflatex -output-directory .build ./ppt.tex
+- pdflatex -output-directory .build ./ppt.cz.tex
 
-- pdflatex -output-directory presentation/.build ./presentation/ppt.tex
-- pdflatex -output-directory presentation/.build ./presentation/ppt.cz.tex
+- pdflatex -output-directory .build ./ppt.tex
+- pdflatex -output-directory .build ./ppt.cz.tex
 
-- sed -i -e "s/.*pptnoteschange/\\\setbeameroption{show only notes}/g" ./presentation/ppt.cz.tex
-- pdflatex -output-directory presentation/.build/notes ./presentation/ppt.cz.tex
-- pdflatex -output-directory presentation/.build/notes ./presentation/ppt.cz.tex
-- mv presentation/.build/notes/ppt.cz.pdf presentation/notes.cz.pdf
+- sed -i -e "s/.*pptnoteschange/\\\setbeameroption{show only notes}/g" ./ppt.cz.tex
+- pdflatex -output-directory .build/notes ./ppt.cz.tex
+- pdflatex -output-directory .build/notes ./ppt.cz.tex
+- mv .build/notes/ppt.cz.pdf notes.cz.pdf
 
 deploy:
   provider: releases
@@ -25,7 +26,7 @@ deploy:
   file: 
     - "presentation/.build/ppt.pdf"
     - "presentation/.build/ppt.cz.pdf"
-    - "presentation/./notes.cz.pdf"
+    - "presentation/notes.cz.pdf"
   skip_cleanup: true
   on:
     repo: Industra/manual-build1
